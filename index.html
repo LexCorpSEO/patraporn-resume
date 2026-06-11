@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patraporn "Ploy" Intarasuk — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1b2435; --ink-soft:#4a566b;
+    --paper:#fbf6ee; --paper-2:#ffffff;
+    --coral:#ff6a52; --coral-deep:#e8492f;
+    --butter:#ffc24b; --sage:#8fb98a; --line:#eadfce;
+    --shadow:0 18px 40px -24px rgba(27,36,53,.45);
+    --display:'Kanit',system-ui,sans-serif;
+    --body:'Sarabun',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--body);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
+  body.en .th{display:none!important}
+  body.th .en{display:none!important}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+
+  /* ---- language toggle ---- */
+  .langbar{position:fixed;top:18px;right:18px;z-index:50;display:flex;
+    background:var(--paper-2);border:1px solid var(--line);border-radius:999px;
+    padding:4px;box-shadow:var(--shadow)}
+  .langbar button{font-family:var(--display);font-weight:600;font-size:13px;
+    letter-spacing:.04em;border:0;background:transparent;color:var(--ink-soft);
+    padding:7px 16px;border-radius:999px;cursor:pointer;transition:.2s}
+  .langbar button.on{background:var(--ink);color:#fff}
+
+  /* ---- hero ---- */
+  header.hero{padding:92px 0 40px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--display);font-weight:600;font-size:13px;
+    letter-spacing:.32em;text-transform:uppercase;color:var(--coral-deep);
+    display:flex;align-items:center;gap:12px;margin:0 0 18px}
+  .eyebrow::before{content:"";width:34px;height:2px;background:var(--coral);flex:none}
+  .hero h1{font-family:var(--display);font-weight:700;
+    font-size:clamp(38px,6.4vw,68px);line-height:1.04;margin:0;letter-spacing:-.01em}
+  .hero h1 .nick{color:var(--coral)}
+  .hero .role{font-family:var(--display);font-weight:500;
+    font-size:clamp(17px,2.2vw,22px);color:var(--ink-soft);margin:22px 0 0;max-width:46ch}
+  .hero .role b{color:var(--ink);font-weight:600;box-shadow:inset 0 -.4em 0 rgba(255,194,75,.45)}
+  .now{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);
+    font-weight:600;font-size:13px;letter-spacing:.04em;color:var(--ink);margin-top:28px;
+    background:var(--paper-2);border:1px solid var(--line);padding:8px 16px 8px 14px;border-radius:999px}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--sage);
+    box-shadow:0 0 0 0 rgba(143,185,138,.6);animation:pulse 2.4s infinite;flex:none}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(143,185,138,.55)}
+    70%{box-shadow:0 0 0 10px rgba(143,185,138,0)}100%{box-shadow:0 0 0 0 rgba(143,185,138,0)}}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .chip{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:14px;
+    font-weight:500;color:var(--ink);background:var(--paper-2);border:1px solid var(--line);
+    padding:9px 15px;border-radius:12px;transition:.18s}
+  .chip:hover{transform:translateY(-2px);border-color:var(--coral);color:var(--coral-deep)}
+  .chip svg{width:15px;height:15px;flex:none;color:var(--coral)}
+
+  /* ---- two-column layout ---- */
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:0 60px;align-items:start}
+  .layout .main{min-width:0}
+  .layout .side{position:sticky;top:28px}
+
+  section{padding:42px 0;border-top:1px solid var(--line)}
+  .main > section:first-child,.side > section:first-child{border-top:0;padding-top:38px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+  .sec-num{font-family:var(--display);font-weight:600;font-size:13px;color:var(--coral);letter-spacing:.1em}
+  .sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(22px,3.4vw,30px);margin:0;letter-spacing:-.01em}
+
+  .about p{font-size:clamp(16px,2vw,19px);max-width:64ch;color:var(--ink-soft);margin:0}
+  .about p b{color:var(--ink);font-weight:600}
+
+  /* ---- skills ---- */
+  .skill-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:12px}
+  .skill{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
+    padding:15px 16px;display:flex;flex-direction:column;gap:10px}
+  .skill .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .skill .name{font-family:var(--display);font-weight:600;font-size:15px}
+  .skill .lvl{font-size:12px;color:var(--ink-soft);font-weight:500;white-space:nowrap}
+  .meter{display:flex;gap:5px}
+  .meter i{width:100%;height:6px;border-radius:6px;background:var(--line)}
+  .meter i.f{background:var(--coral)}
+  .areas{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-size:13px;font-weight:500;background:rgba(255,106,82,.09);color:var(--coral-deep);
+    border:1px solid rgba(255,106,82,.22);padding:6px 12px;border-radius:999px}
+
+  /* ---- timeline ---- */
+  .timeline{position:relative;margin-left:6px;padding-left:30px}
+  .timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;
+    background:linear-gradient(var(--coral),var(--butter))}
+  .entry{position:relative;padding-bottom:32px}
+  .entry:last-child{padding-bottom:0}
+  .entry::before{content:"";position:absolute;left:-30px;top:6px;width:12px;height:12px;
+    border-radius:50%;background:var(--paper);border:3px solid var(--coral)}
+  .entry.live::before{background:var(--coral)}
+  .when{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.04em;color:var(--coral-deep);margin-bottom:6px}
+  .entry h3{font-family:var(--display);font-weight:600;font-size:18px;margin:0 0 2px;line-height:1.25}
+  .org{font-size:14px;color:var(--ink-soft);font-weight:500;margin-bottom:11px}
+  .entry ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+  .entry li{font-size:14.5px;color:var(--ink-soft)}
+  .entry li::marker{color:var(--coral)}
+
+  /* ---- education + interests (sidebar) ---- */
+  .edu{display:flex;flex-direction:column;gap:14px}
+  .edu .card{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;border-top:4px solid var(--butter)}
+  .edu h3{font-family:var(--display);font-weight:600;font-size:16px;margin:0 0 6px}
+  .edu p{margin:0;color:var(--ink-soft);font-size:14px}
+  .edu .gpa{display:inline-block;margin-top:11px;font-family:var(--display);font-weight:600;
+    font-size:13px;color:var(--ink);background:rgba(255,194,75,.25);padding:5px 12px;border-radius:999px}
+  .interests{display:flex;flex-wrap:wrap;gap:10px}
+  .interests .ic{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:14px;
+    background:var(--paper-2);border:1px solid var(--line);padding:10px 15px;border-radius:12px}
+
+  /* ---- footer ---- */
+  footer{border-top:1px solid var(--line);padding:36px 0 56px;text-align:center}
+  footer .salary{font-family:var(--display);font-weight:600;font-size:15px;color:var(--ink);
+    background:rgba(143,185,138,.18);display:inline-block;padding:9px 20px;border-radius:999px;margin-bottom:16px}
+  footer .meta{font-size:14px;color:var(--ink-soft)}
+  footer .meta a{color:var(--coral-deep);text-decoration:none}
+
+  /* ---- tablet & mobile (≤880): single column, logical reading order ---- */
+  @media(max-width:880px){
+    .layout{display:flex;flex-direction:column;gap:0}
+    .main,.side{display:contents}
+    section{border-top:1px solid var(--line)!important;padding-top:44px}
+    .about{order:1;border-top:0!important;padding-top:36px}
+    .s-skills{order:2}
+    .s-exp{order:3}
+    .s-edu{order:4}
+    .s-int{order:5}
+  }
+  /* ---- tablet (600–880): use the extra width ---- */
+  @media(min-width:600px) and (max-width:880px){
+    .edu{flex-direction:row}
+    .edu .card{flex:1}
+  }
+  /* ---- mobile (≤560): tighten everything ---- */
+  @media(max-width:560px){
+    header.hero{padding:74px 0 30px}
+    .wrap{padding:0 20px}
+    .langbar{top:12px;right:12px}
+    .langbar button{padding:6px 13px;font-size:12px}
+    .hero h1{font-size:clamp(34px,10vw,46px)}
+    .hero .role{margin-top:18px;font-size:16px}
+    .now{margin-top:22px;font-size:12px}
+    .chips{margin-top:24px;gap:8px}
+    .chip{font-size:13px;padding:8px 13px}
+    section{padding:32px 0!important}
+    .about{padding-top:28px!important}
+    .sec-head{margin-bottom:22px}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ---- print / save as PDF ---- */
+  @media print{
+    .langbar{display:none}
+    body{background:#fff}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) 280px}
+    .main,.side{display:block}
+    .main,.side{order:0}
+    section{border-color:#ddd!important;padding:14px 0!important}
+    .chip,.skill,.edu .card,.interests .ic{box-shadow:none}
+    .entry{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body class="en">
+
+<nav class="langbar" aria-label="Language">
+  <button id="b-en" class="on" onclick="setLang('en')">EN</button>
+  <button id="b-th" onclick="setLang('th')">ไทย</button>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Ploy · Portfolio &amp; Resume</p>
+    <h1><span class="en">Patraporn <span class="nick">"Ploy"</span><br>Intarasuk</span><span class="th">ภัทราพร <span class="nick">"พลอย"</span><br>อินทรสุข</span></h1>
+    <p class="role">
+      <span class="en">I plan social channels, <b>create content</b>, write scripts and <b>edit video</b> — turning brands and stories into work people actually watch.</span>
+      <span class="th">วางแผนสื่อโซเชียล <b>สร้างสรรค์คอนเทนต์</b> เขียนบทและ <b>ตัดต่อวิดีโอ</b> เปลี่ยนแบรนด์และเรื่องราวให้เป็นผลงานที่คนอยากดูจริง ๆ</span>
+    </p>
+    <div class="now">
+      <span class="dot"></span>
+      <span class="en">Now at CRC Thaiwatsadu — BNB E-Commerce</span>
+      <span class="th">ปัจจุบันที่ CRC ไทวัสดุ — BNB E-Commerce</span>
+    </div>
+    <div class="chips">
+      <a class="chip" href="mailto:paployy28@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        paployy28@gmail.com</a>
+      <a class="chip" href="tel:0926515963">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        092-651-5963</a>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="en">Lat Krabang, Bangkok</span><span class="th">ลาดกระบัง กรุงเทพฯ</span></span>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 2H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5Zm-5 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10Zm5.5-9a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+        @__ploymxnn</span>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+        Ploy Patraporn</span>
+      <span class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+        LINE: MYPP_</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap layout">
+
+  <!-- ===== MAIN COLUMN ===== -->
+  <div class="main">
+
+    <section class="about">
+      <div class="sec-head"><span class="sec-num">01</span>
+        <h2><span class="en">About</span><span class="th">เกี่ยวกับฉัน</span></h2></div>
+      <p class="en">I'm motivated to learn and grow in a role aligned with what I studied. I believe my skills and experience can help create <b>quality work for the team</b> — and I never stop developing myself to deliver the greatest value to the organization.</p>
+      <p class="th">ดิฉันมีจุดมุ่งหมายเพื่อเรียนรู้การทำงานและทำงานได้ตรงกับสายที่เรียนมา เชื่อว่าทักษะและประสบการณ์ที่ผ่านมาจะมีส่วนช่วย <b>สร้างสรรค์งานที่มีคุณภาพให้กับองค์กร</b> และจะไม่หยุดพัฒนาตัวเองเพื่อให้เกิดผลประโยชน์กับองค์กรมากที่สุด</p>
+    </section>
+
+    <section class="s-exp">
+      <div class="sec-head"><span class="sec-num">03</span>
+        <h2><span class="en">Experience</span><span class="th">ประสบการณ์การทำงาน</span></h2></div>
+      <div class="timeline">
+
+        <div class="entry live">
+          <div class="when"><span class="en">May 2022 – Present</span><span class="th">พ.ค. 2565 – ปัจจุบัน</span></div>
+          <h3>Sale, Communication &amp; Digital Marketing</h3>
+          <div class="org">BNB E-Commerce · CRC <span class="en">Thaiwatsadu (Central Retail)</span><span class="th">ไทวัสดุ (Central Retail)</span></div>
+          <ul class="en">
+            <li>Plan and manage all social channels in line with brand strategy.</li>
+            <li>Develop content concepts and write scripts for video production to grow viewership.</li>
+            <li>Define key messaging for PR artwork and communication materials for target audiences.</li>
+            <li>Prepare and manage purchase orders (PO), coordinating accurately across departments.</li>
+          </ul>
+          <ul class="th">
+            <li>วางแผนและบริหารสื่อสังคมออนไลน์ทุกช่องทางตามกลยุทธ์แบรนด์</li>
+            <li>สร้างสรรค์แนวคิดคอนเทนต์และเขียนบทสำหรับการผลิตสื่อวิดีโอ เพื่อเพิ่มยอดผู้เข้าชม</li>
+            <li>กำหนดข้อความหลักสำหรับสื่อประชาสัมพันธ์ (Artwork) ให้ตรงกลุ่มเป้าหมาย</li>
+            <li>จัดทำและบริหารใบสั่งซื้อ (PO) ประสานงานกับฝ่ายที่เกี่ยวข้องอย่างถูกต้องตามระบบ</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="when"><span class="en">Nov 2020 – May 2026</span><span class="th">พ.ย. 2563 – พ.ค. 2569</span></div>
+          <h3><span class="en">Freelance — Online Content &amp; AE Marketing</span><span class="th">Freelance — Online Content &amp; AE Marketing</span></h3>
+          <div class="org"><span class="en">Independent / Multiple brands</span><span class="th">อิสระ / หลายแบรนด์</span></div>
+          <ul class="en">
+            <li>Web content &amp; news: wrote articles, film reviews and online news to drive site traffic.</li>
+            <li>Created content, wrote scripts and edited the show "Chuea Pak Ku" (EP.20–24).</li>
+            <li>Produced content for KinjaiThailand (tools/agriculture) and Maris s &amp; Matera (supplements).</li>
+            <li>AE: built strategies to expand new customers, managed clients, prepared quotations.</li>
+          </ul>
+          <ul class="th">
+            <li>Web Content &amp; News: เขียนบทความ บทวิจารณ์ภาพยนตร์ และข่าวออนไลน์ ดึงดูดผู้เข้าชมเว็บไซต์</li>
+            <li>คิดคอนเทนต์ เขียนบท และตัดต่อวิดีโอรายการ "เชื่อปากกู" (EP.20–24)</li>
+            <li>สร้างสรรค์คอนเทนต์เพจ KinjaiThailand (เครื่องมือช่าง/เกษตร) และ Maris s &amp; Matera (อาหารเสริม)</li>
+            <li>AE: วางแผนกลยุทธ์ขยายฐานลูกค้าใหม่ ดูแลความสัมพันธ์ลูกค้า จัดทำใบเสนอราคา</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="when"><span class="en">Apr 2020 – Oct 2020</span><span class="th">เม.ย. 2563 – ต.ค. 2563</span></div>
+          <h3>Customer Service</h3>
+          <div class="org">TRUE GS CO., LTD.</div>
+          <ul class="en">
+            <li>Handled inbound calls with professional information and service.</li>
+            <li>Received complaints and resolved issues on the spot for customer satisfaction.</li>
+            <li>Assisted and facilitated customers across all cases.</li>
+          </ul>
+          <ul class="th">
+            <li>รับสายลูกค้าที่ติดต่อเข้ามา พร้อมให้ข้อมูลและบริการอย่างมืออาชีพ</li>
+            <li>รับเรื่องร้องเรียน วิเคราะห์และแก้ไขปัญหาเฉพาะหน้าเพื่อความพึงพอใจของลูกค้า</li>
+            <li>ให้การช่วยเหลือและอำนวยความสะดวกแก่ลูกค้าในทุกกรณี</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="when"><span class="en">Nov 2019 – Mar 2020</span><span class="th">พ.ย. 2562 – มี.ค. 2563</span></div>
+          <h3><span class="en">Internship — Online Social Media</span><span class="th">ฝึกงาน — Online Social Media</span></h3>
+          <div class="org">MCOT PCL · 9Entertain</div>
+          <ul class="en">
+            <li>News &amp; Content Creator: concise, engaging content for the station's Facebook.</li>
+            <li>Live Broadcast Control: ran the live system for smooth, high-quality output.</li>
+            <li>Quality Control: checked image and audio files before broadcast.</li>
+            <li>Event Coordination for the "9entertain Awards".</li>
+          </ul>
+          <ul class="th">
+            <li>News &amp; Content Creator: สรุปข่าวและสร้างคอนเทนต์ลง Facebook ของสถานีอย่างกระชับน่าสนใจ</li>
+            <li>Live Broadcast Control: ควบคุมและดูแลระบบถ่ายทอดสดให้ราบรื่นและมีคุณภาพ</li>
+            <li>Quality Control: ตรวจสอบคุณภาพไฟล์ภาพและเสียงก่อนออกอากาศ</li>
+            <li>Event Coordination: ประสานงานจัดงาน "9entertain Awards"</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="when"><span class="en">Jan 2018 – Oct 2019</span><span class="th">ม.ค. 2561 – ต.ค. 2562</span></div>
+          <h3><span class="en">Part-time — Swensen's</span><span class="th">Part-time — Swensen's</span></h3>
+          <div class="org"><span class="en">The Minor Food Group PCL</span><span class="th">บมจ. เดอะ ไมเนอร์ ฟู้ด กรุ๊ป</span></div>
+          <ul class="en">
+            <li>Took orders, managed queues and prepared ice cream to store standards.</li>
+            <li>Handled cashier duties, verified cash and managed front-counter payments.</li>
+            <li>Welcomed and served customers for a memorable experience.</li>
+          </ul>
+          <ul class="th">
+            <li>รับออเดอร์ บริหารคิว และจัดเตรียมไอศกรีมตามมาตรฐานของร้าน</li>
+            <li>รับผิดชอบงานแคชเชียร์ ตรวจสอบยอดเงิน และดูแลการชำระเงินหน้าเคาน์เตอร์</li>
+            <li>ให้การต้อนรับและบริการลูกค้าเพื่อสร้างประสบการณ์ที่น่าประทับใจ</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="when">2016 – 2019</div>
+          <h3><span class="en">Student Productions</span><span class="th">ผลงานระหว่างเรียน</span></h3>
+          <div class="org"><span class="en">Kasembundit University · Communication Arts</span><span class="th">มหาวิทยาลัยเกษมบัณฑิต · นิเทศศาสตร์</span></div>
+          <ul class="en">
+            <li>Host &amp; Scriptwriter — wrote and hosted "On Day By Bike" + short news features.</li>
+            <li>Production &amp; Post: scene design, sound, graphics, end-credit editing for "Sek Hai Suay".</li>
+            <li>Show Creator &amp; Composer — wrote, directed and composed the theme for "Can Do It".</li>
+            <li>Filmmaking — directed/edited a short film entered in the Cat Film festival.</li>
+          </ul>
+          <ul class="th">
+            <li>Host &amp; Scriptwriter — เขียนบทและดำเนินรายการ "On Day By Bike" และสกู๊ปข่าวสั้น</li>
+            <li>Production &amp; Post — ออกแบบฉาก ควบคุมเสียง กราฟิก ตัดต่อ End Credit รายการ "เสกให้สวย"</li>
+            <li>Show Creator &amp; Composer — เขียนบท กำกับ และแต่งเพลงประกอบรายการ "Can Do It"</li>
+            <li>Filmmaking — กำกับ/ตัดต่อภาพยนตร์สั้นส่งประกวดเทศกาล Cat Film</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="side">
+
+    <section class="s-skills">
+      <div class="sec-head"><span class="sec-num">02</span>
+        <h2><span class="en">Skills</span><span class="th">ทักษะ</span></h2></div>
+      <div class="skill-list">
+      <div class="skill"><div class="top"><span class="name">Adobe Photoshop</span><span class="lvl"><span class="en">Basic</span><span class="th">เบื้องต้น</span></span></div><div class="meter"><i class="f"></i><i></i><i></i></div></div>
+      <div class="skill"><div class="top"><span class="name">Adobe Premiere Pro</span><span class="lvl"><span class="en">Basic</span><span class="th">เบื้องต้น</span></span></div><div class="meter"><i class="f"></i><i></i><i></i></div></div>
+      <div class="skill"><div class="top"><span class="name">Microsoft Word</span><span class="lvl"><span class="en">Intermediate</span><span class="th">ปานกลาง</span></span></div><div class="meter"><i class="f"></i><i class="f"></i><i></i></div></div>
+      <div class="skill"><div class="top"><span class="name">Microsoft PowerPoint</span><span class="lvl"><span class="en">Intermediate</span><span class="th">ปานกลาง</span></span></div><div class="meter"><i class="f"></i><i class="f"></i><i></i></div></div>
+      <div class="skill"><div class="top"><span class="name">Microsoft Excel</span><span class="lvl"><span class="en">Intermediate</span><span class="th">ปานกลาง</span></span></div><div class="meter"><i class="f"></i><i class="f"></i><i></i></div></div>
+      </div>
+      <div class="areas">
+        <span class="tag"><span class="en">Social media planning</span><span class="th">วางแผนสื่อโซเชียล</span></span>
+        <span class="tag"><span class="en">Content &amp; scriptwriting</span><span class="th">เขียนคอนเทนต์ &amp; บท</span></span>
+        <span class="tag"><span class="en">Video editing</span><span class="th">ตัดต่อวิดีโอ</span></span>
+        <span class="tag"><span class="en">Copywriting / artwork</span><span class="th">เขียนข้อความ / อาร์ตเวิร์ก</span></span>
+        <span class="tag"><span class="en">Marketing communications</span><span class="th">สื่อสารการตลาด</span></span>
+        <span class="tag"><span class="en">Customer relations</span><span class="th">ดูแลลูกค้า</span></span>
+      </div>
+    </section>
+
+    <section class="s-edu">
+      <div class="sec-head"><span class="sec-num">04</span>
+        <h2><span class="en">Education</span><span class="th">การศึกษา</span></h2></div>
+      <div class="edu">
+        <div class="card">
+          <h3><span class="en">Kasembundit University</span><span class="th">มหาวิทยาลัยเกษมบัณฑิต</span></h3>
+          <p class="en">Bachelor's Degree — Faculty of Communication Arts<br>Major: Radio, Television &amp; Digital Media</p>
+          <p class="th">ปริญญาตรี — คณะนิเทศศาสตร์<br>สาขาวิทยุ โทรทัศน์ และสื่อดิจิทัล</p>
+          <span class="gpa">GPA 3.56</span>
+        </div>
+        <div class="card">
+          <h3><span class="en">Debsirinromklao School</span><span class="th">โรงเรียนเทพศิรินทร์ร่มเกล้า</span></h3>
+          <p class="en">High School (Grade 12)<br>Math – English Program</p>
+          <p class="th">มัธยมศึกษาตอนปลาย (ม.6)<br>สายคณิต – อังกฤษ</p>
+          <span class="gpa">GPA 2.57</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="s-int">
+      <div class="sec-head"><span class="sec-num">05</span>
+        <h2><span class="en">Interests</span><span class="th">ความสนใจ</span></h2></div>
+      <div class="interests">
+        <span class="ic">🎬 <span class="en">Film</span><span class="th">ภาพยนตร์</span></span>
+        <span class="ic">🎵 <span class="en">Music</span><span class="th">ดนตรี</span></span>
+        <span class="ic">🎮 <span class="en">Gaming</span><span class="th">เกม</span></span>
+        <span class="ic">📷 <span class="en">Photography</span><span class="th">การถ่ายภาพ</span></span>
+        <span class="ic">📚 <span class="en">Reading</span><span class="th">การอ่าน</span></span>
+      </div>
+    </section>
+
+  </aside>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="salary"><span class="en">Expected salary · 35,000 THB</span><span class="th">เงินเดือนที่คาดหวัง · 35,000 บาท</span></div>
+    <div class="meta">
+      <span class="en">Patraporn "Ploy" Intarasuk</span><span class="th">ภัทราพร (พลอย) อินทรสุข</span>
+      &nbsp;·&nbsp; <a href="mailto:paployy28@gmail.com">paployy28@gmail.com</a>
+      &nbsp;·&nbsp; 092-651-5963
+    </div>
+  </div>
+</footer>
+
+<script>
+  function setLang(l){
+    document.body.classList.remove('en','th');
+    document.body.classList.add(l);
+    document.documentElement.lang = (l==='th'?'th':'en');
+    document.getElementById('b-en').classList.toggle('on', l==='en');
+    document.getElementById('b-th').classList.toggle('on', l==='th');
+  }
+</script>
+</body>
+</html>
